@@ -79,3 +79,31 @@ BEGIN
 	 END IF;
 END;
 $$
+
+-- Gerar inteiros no intervalo de 20 a 50.
+
+-- LOOP
+DO $$
+DECLARE
+    x INT := valor_aleatorio_entre(20, 50);
+    y INT := valor_aleatorio_entre(20, 50);
+    soma INT := 0;
+    menor INT;
+    maior INT;
+    i INT;
+BEGIN
+    menor := LEAST(x, y) + 1;		-- Determina limites(menores)
+    maior := GREATEST(x, y) - 1;	-- Determina limites(maiores)
+
+    i := menor;
+    LOOP
+        EXIT WHEN i > maior;
+        IF i % 2 != 0 THEN
+            soma := soma + i;
+        END IF;
+        i := i + 1;
+    END LOOP;
+
+    RAISE NOTICE 'X: %, Y: %, Soma dos ímpares: %', x, y, soma;
+END;
+$$
