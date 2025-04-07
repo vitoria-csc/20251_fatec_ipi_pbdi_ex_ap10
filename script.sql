@@ -107,3 +107,28 @@ BEGIN
     RAISE NOTICE 'X: %, Y: %, Soma dos ímpares: %', x, y, soma;
 END;
 $$
+
+-- WHILE
+DO $$
+DECLARE
+    x INT := valor_aleatorio_entre(20, 50);
+    y INT := valor_aleatorio_entre(20, 50);
+    soma INT := 0;
+    i INT;
+    menor INT;
+    maior INT;
+BEGIN
+    menor := LEAST(x, y) + 1;
+    maior := GREATEST(x, y) - 1;
+
+    i := menor;
+    WHILE i <= maior LOOP
+        IF i % 2 != 0 THEN
+            soma := soma + i;
+        END IF;
+        i := i + 1;
+    END LOOP;
+
+    RAISE NOTICE 'X: %, Y: %, Soma dos ímpares: %', x, y, soma;
+END;
+$$
