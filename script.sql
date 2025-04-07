@@ -180,3 +180,19 @@ BEGIN
     RAISE NOTICE 'X: %, Y: %, Soma dos ímpares entre eles: %', x, y, soma;
 END;
 $$
+
+-- Gerar inteiros no intervalo de 1 a 100.
+
+-- LOOP
+DO $$
+DECLARE
+    count INTEGER := 0;
+    numero INTEGER;
+BEGIN
+    LOOP
+        numero := FLOOR(1 + RANDOM() * 100);  -- gera número de 1 a 100
+        RAISE NOTICE 'LOOP: %', numero;
+        count := count + 1;
+        EXIT WHEN count = 5;
+    END LOOP;
+END $$;
