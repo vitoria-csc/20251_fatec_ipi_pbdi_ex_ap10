@@ -154,3 +154,29 @@ BEGIN
     RAISE NOTICE 'X: %, Y: %, Soma dos ímpares: %', x, y, soma;
 END;
 $$
+
+-- FOREACH
+DO $$
+DECLARE
+    x INT := valor_aleatorio_entre(20, 50);
+    y INT := valor_aleatorio_entre(20, 50);
+    menor INT := LEAST(x, y) + 1;
+    maior INT := GREATEST(x, y) - 1;
+    numeros INT[] := '{}'; 
+    i INT;
+    soma INT := 0;
+BEGIN
+    FOR i IN menor..maior LOOP
+        numeros := array_append(numeros, i);
+    END LOOP;
+
+    -- impares
+    FOREACH i IN ARRAY numeros LOOP
+        IF i % 2 != 0 THEN
+            soma := soma + i;
+        END IF;
+    END LOOP;
+
+    RAISE NOTICE 'X: %, Y: %, Soma dos ímpares entre eles: %', x, y, soma;
+END;
+$$
