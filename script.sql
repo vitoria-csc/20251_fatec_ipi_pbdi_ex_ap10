@@ -209,3 +209,14 @@ BEGIN
         count := count + 1;
     END LOOP;
 END $$;
+
+-- FOR
+DO $$
+DECLARE
+    numero INTEGER;
+BEGIN
+    FOR i IN 1..5 LOOP
+        numero := FLOOR(1 + RANDOM() * 100);
+        RAISE NOTICE 'FOR: %', numero;
+    END LOOP;
+END $$;
