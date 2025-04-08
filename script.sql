@@ -220,3 +220,20 @@ BEGIN
         RAISE NOTICE 'FOR: %', numero;
     END LOOP;
 END $$;
+
+-- FOREACH
+DO $$
+DECLARE
+    numeros INTEGER[] := ARRAY[
+        FLOOR(1 + RANDOM() * 100),
+        FLOOR(1 + RANDOM() * 100),
+        FLOOR(1 + RANDOM() * 100),
+        FLOOR(1 + RANDOM() * 100),
+        FLOOR(1 + RANDOM() * 100)
+    ];
+    numero INTEGER;
+BEGIN
+    FOREACH numero IN ARRAY numeros LOOP
+        RAISE NOTICE 'FOREACH: %', numero;
+    END LOOP;
+END $$;
