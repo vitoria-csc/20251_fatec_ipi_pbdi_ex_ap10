@@ -1,6 +1,6 @@
 -- Gerar inteiros no intervalo de -50 a 50.
 
--- FOR
+-- LOOP
 DO $$
 DECLARE
 		i INT;
