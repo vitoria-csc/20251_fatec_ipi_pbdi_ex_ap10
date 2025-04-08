@@ -253,6 +253,7 @@ g INT := valor_aleatorio_entre(1, 12);
 h INT := valor_aleatorio_entre(1, 12);
 i INT := valor_aleatorio_entre(1, 12);
 determinante INT;
+
 BEGIN
 RAISE NOTICE 'Matriz:';
 RAISE NOTICE '[%, %, %]', a, b, c;
