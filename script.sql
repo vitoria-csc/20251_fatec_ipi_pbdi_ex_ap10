@@ -196,3 +196,16 @@ BEGIN
         EXIT WHEN count = 5;
     END LOOP;
 END $$;
+
+-- WHILE
+DO $$
+DECLARE
+    count INTEGER := 0;
+    numero INTEGER;
+BEGIN
+    WHILE count < 5 LOOP
+        numero := FLOOR(1 + RANDOM() * 100);
+        RAISE NOTICE 'WHILE: %', numero;
+        count := count + 1;
+    END LOOP;
+END $$;
