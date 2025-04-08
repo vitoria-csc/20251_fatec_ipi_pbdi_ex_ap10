@@ -237,3 +237,28 @@ BEGIN
         RAISE NOTICE 'FOREACH: %', numero;
     END LOOP;
 END $$;
+
+--1.2 Faça um programa que calcule o determinante de uma matriz quadrada de ordem 3 utilizando a regra de Sarrus.
+
+DO
+$$
+DECLARE
+a INT := valor_aleatorio_entre(1, 12);
+b INT := valor_aleatorio_entre(1, 12);
+c INT := valor_aleatorio_entre(1, 12);
+d INT := valor_aleatorio_entre(1, 12);
+e INT := valor_aleatorio_entre(1, 12);
+f INT := valor_aleatorio_entre(1, 12);
+g INT := valor_aleatorio_entre(1, 12);
+h INT := valor_aleatorio_entre(1, 12);
+i INT := valor_aleatorio_entre(1, 12);
+determinante INT;
+BEGIN
+RAISE NOTICE 'Matriz:';
+RAISE NOTICE '[%, %, %]', a, b, c;
+RAISE NOTICE '[%, %, %]', d, e, f;
+RAISE NOTICE '[%, %, %]', g, h, i;
+determinante := (a*e*i) + (b*f*g) + (c*d*h) - (c*e*g) - (b*d*i) - (a*f*h);
+RAISE NOTICE 'Determinante: %', determinante;
+END;
+$$
